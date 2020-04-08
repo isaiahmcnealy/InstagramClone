@@ -1,4 +1,4 @@
-package com.isaiahmcnealy.myapplication;
+package com.isaiahmcnealy.InstagramClone;
 
 import androidx.appcompat.app.AppCompatActivity;
 

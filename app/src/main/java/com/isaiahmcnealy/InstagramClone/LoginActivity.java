@@ -1,4 +1,4 @@
-package com.isaiahmcnealy.myapplication;
+package com.isaiahmcnealy.InstagramClone;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,8 +51,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void done(ParseUser user, ParseException e) {
                 if(e != null) {
+                    // TODO: improve error handling
                     Log.e(TAG, "Issue with login");
-                    Log.i(TAG, "Issue with Login");
+                    Toast.makeText(LoginActivity.this, "Issue with logging in", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 // TODO: navigate to the main activity if the user has signed in properly
