@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btnTakePicture"
+        android:id="@+id/btnCaptureImage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -16,10 +16,10 @@
         android:text="Take Picture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,19 +33,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSubmit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Button"
+        android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPicture" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPostImage" />
 
     <ImageView
-        android:id="@+id/ivPicture"
+        android:id="@+id/ivPostImage"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginStart="16dp"
@@ -54,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTakePicture"
+        app:layout_constraintTop_toBottomOf="@+id/btnCaptureImage"
         tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
