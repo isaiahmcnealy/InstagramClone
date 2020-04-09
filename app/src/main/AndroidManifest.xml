@@ -12,7 +12,19 @@
         android:supportsRtl="true"
         android:name="com.isaiahmcnealy.InstagramClone.ParseApplication"
         android:theme="@style/AppTheme">
-<!--        Activity to be launched at start of app-->
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.codepath.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/fileprovider" />
+        </provider>
+
+
+        <!--        Activity to be launched at start of app-->
         <activity android:name="com.isaiahmcnealy.InstagramClone.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
