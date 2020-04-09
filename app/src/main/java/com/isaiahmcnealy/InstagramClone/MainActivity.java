@@ -40,9 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private File photoFile;
     private String photoFileName;
 
-    //TODO: Failed to find configured root that contains /storage/emulated/0/Android/data/com.isaiahmcnealy.InstagramClone/files/Pictures/MainActivity/null
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         btnSubmit = findViewById(R.id.btnSubmit);
         ivPostImage = findViewById(R.id.ivPostImage);
-        // TODO: Resume video 6 at the 6:00 minute timestamp
-        // TODO: Issue: Camera won't open
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
