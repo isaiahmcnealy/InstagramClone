@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.isaiahmcnealy.myapplication">
+    package="com.isaiahmcnealy.InstagramClone">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,17 +10,29 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".ParseApplication"
+        android:name="com.isaiahmcnealy.InstagramClone.ParseApplication"
         android:theme="@style/AppTheme">
-<!--        Activity to be launched at start of app-->
-        <activity android:name=".LoginActivity">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.codepath.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/fileprovider" />
+        </provider>
+
+
+        <!--        Activity to be launched at start of app-->
+        <activity android:name="com.isaiahmcnealy.InstagramClone.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.isaiahmcnealy.InstagramClone.MainActivity">
         </activity>
     </application>
 
