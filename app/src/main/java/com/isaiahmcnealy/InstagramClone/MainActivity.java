@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etDescription;
     private Button btnCaptureImage;
     private Button btnSubmit;
+    private Button btnLogout;
     private ImageView ivPostImage;
     private File photoFile;
     private String photoFileName;
@@ -48,33 +49,60 @@ public class MainActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnLogout = findViewById(R.id.btnLogout);
         ivPostImage = findViewById(R.id.ivPostImage);
+
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchCamera();
             }
         });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Attempting to log out");
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser(); // this will not be null
+                Toast.makeText(MainActivity.this, "Successfully logged out", Toast.LENGTH_SHORT).show();
+                goToLoginActivity();
+            }
+        });
         
 
-//        queryPosts();
+        queryPosts();
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String description = etDescription.getText().toString();
-                if(description.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Description cannot be empty", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(photoFile == null || ivPostImage.getDrawable() == null) {
-                    Toast.makeText(MainActivity.this, "Photo cannot be empty", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(description, currentUser, photoFile);
+                SubmitPost();
             }
         });
 
+
+    }
+
+    private void SubmitPost() {
+        Log.i(TAG, "Attempting to submit post");
+        String description = etDescription.getText().toString();
+        if(description.isEmpty()) {
+            Toast.makeText(MainActivity.this, "Description cannot be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(photoFile == null || ivPostImage.getDrawable() == null) {
+            Toast.makeText(MainActivity.this, "Photo cannot be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        savePost(description, currentUser, photoFile);
+    }
+
+    private void goToLoginActivity() {
+        Log.i(TAG, "Attempting to return to loginActivity");
+        // use intent system to navigate to new activity
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
 
     }
 
@@ -142,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Error while saving!", Toast.LENGTH_SHORT).show();
                 }
                 Log.i(TAG, "Post save was successful!!");
+                Toast.makeText(MainActivity.this, "Post saved", Toast.LENGTH_SHORT).show();
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
             }
@@ -160,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 for (Post post : posts) {
-                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
+                    Log.i(TAG, "User: " + post.getUser().getUsername() + ", Post:" + post.getDescription());
                 }
             }
         });
