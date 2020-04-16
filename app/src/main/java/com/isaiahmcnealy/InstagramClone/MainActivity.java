@@ -26,6 +26,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.isaiahmcnealy.InstagramClone.fragments.ComposeFragment;
 import com.isaiahmcnealy.InstagramClone.fragments.PostFragment;
+import com.isaiahmcnealy.InstagramClone.fragments.ProfileFragment;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -79,10 +80,12 @@ public class MainActivity extends AppCompatActivity {
                         signOut();
                         break;
                     case R.id.action_profile:
+                        fragment = new ProfileFragment();
+                        break;
                     default:
                         // do something here
                         Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
-                        fragment = new ComposeFragment();
+                        fragment = new ProfileFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
