@@ -66,17 +66,14 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_home:
                         // do something here
-                        Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
                         fragment = new PostFragment();
                         break;
                     case R.id.action_compose:
                         // do something here
-                        Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
                         fragment = new ComposeFragment();
                         break;
                     case R.id.action_logout:
                         // do something here
-                        Toast.makeText(MainActivity.this, "Logout!", Toast.LENGTH_SHORT).show();
                         signOut();
                         break;
                     case R.id.action_profile:
@@ -84,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     default:
                         // do something here
-                        Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
                         fragment = new ProfileFragment();
                         break;
                 }
